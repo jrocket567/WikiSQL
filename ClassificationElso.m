@@ -200,10 +200,10 @@ for idy=1:length(queryString)
     if sum(typeTF)>=1
         selectedCat=TypeCategories(typeTF);
         if strlength(Conditional)==0
-            Conditional=["ECMOTYPE is " selectedCat];
+            Conditional=["ECMOTYPE = '" selectedCat "'"];
             
         else
-            Conditional=[Conditional "AND ECMOTYPE is " selectedCat];%#ok<AGROW>
+            Conditional=[Conditional "AND ECMOTYPE = '" selectedCat "'"];%#ok<AGROW>
         end
         
         returnTable=returnTable(returnTable.ECMOTYPE==selectedCat,:);
@@ -213,7 +213,7 @@ for idy=1:length(queryString)
         if strlength(Conditional)==0
             Conditional=["ECMOTYPE is " selectedCat];
         else
-            Conditional=[Conditional "AND ECMOTYPE is " selectedCat];%#ok<AGROW>
+            Conditional=[Conditional "AND ECMOTYPE = '" selectedCat "'"];%#ok<AGROW>
         end
         returnTable=returnTable(returnTable.ParentECMOTYPE==selectedCat,:);
     end
