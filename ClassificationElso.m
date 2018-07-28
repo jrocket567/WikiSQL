@@ -1,8 +1,8 @@
-function sqlquery=ClassificationElso(query)
+function [sqlquery, returnTable2]=ClassificationElso(query)
 % Use text analytics to break apart queries into sections
 % not using LSTM
 % J Penick July 2018
-
+ECMO=evalin('base','ECMO');
 %query='Average time on ECMO for neonatal patients with VV';
 %query='Survival rate of ECMO for neonatal patients';
 %query='Maximum survival rate of ECMO for pediatric patients in 2002';
@@ -135,7 +135,7 @@ end
 
 %% Determine what columns are wanted in columnsOfInterest
 
-[columnsOfInterest, queryString]=ColumnSelectionFunction(queryString);
+[columnsOfInterest, queryString, outColumnIndex]=ColumnSelectionFunction(queryString);
 
 
 %% Create WHERE conditionals
@@ -171,11 +171,14 @@ for idy=1:length(queryString)
     
     
     if neoTF==1
-        Conditional=[Conditional "AGE =<28"];  %#ok<AGROW>
+        Conditional=[Conditional "AGE <=28"];  %#ok<AGROW>
+        returnTable=ECMO(ECMO.Age<=28,:);
     elseif pedTF==1
-        Conditional=[Conditional "AGE >28 AND AGE =<6570"]; %#ok<AGROW>
+        Conditional=[Conditional "AGE >28 AND AGE <=6570"]; %#ok<AGROW>
+        returnTable=ECMO(ECMO.Age>28 && ECMO.Age<=6570,:);
     elseif adultTF==1
         Conditional=[Conditional "AGE >6570"]; %#ok<AGROW>
+        returnTable=ECMO(ECMO.Age>657028,:);
     end
         
     % look for VV or VA
@@ -198,9 +201,13 @@ for idy=1:length(queryString)
         selectedCat=TypeCategories(typeTF);
         if strlength(Conditional)==0
             Conditional=["ECMOTYPE is " selectedCat];
+            
         else
             Conditional=[Conditional "AND ECMOTYPE is " selectedCat];%#ok<AGROW>
         end
+        
+        returnTable=returnTable(returnTable.ECMOTYPE==selectedCat,:);
+        
     elseif sum(parentTypeTF)>=1
         selectedCat=ParentTypeCategories(parentTypeTF);
         if strlength(Conditional)==0
@@ -208,6 +215,7 @@ for idy=1:length(queryString)
         else
             Conditional=[Conditional "AND ECMOTYPE is " selectedCat];%#ok<AGROW>
         end
+        returnTable=returnTable(returnTable.ParentECMOTYPE==selectedCat,:);
     end
     
     
@@ -219,9 +227,17 @@ end
 
 sqlquery=["SELECT " AggString columnsOfInterest "FROM ELSO "  "WHERE " Conditional];
 
+% Take returnTable that is filtered on conditionals and only return
+% columnsOfInterest
+
+returnTable2=returnTable(:,logical(outColumnIndex));
+returnTable2=[returnTable(:,1) returnTable2];
+
+
+
 sqlquery=join(sqlquery);
 
-end
+ end
 
 %% Supporting Functions
 
@@ -234,7 +250,7 @@ outString=joinWords(mC);
 
 end
 
-function [outColumnList, queryString]=ColumnSelectionFunction(queryString)
+function [outColumnList, queryString, outColumnIndex]=ColumnSelectionFunction(queryString)
 
 ECMO=evalin('base','ECMO');
 % See if we get lucky and a column name matches database
@@ -287,7 +303,13 @@ elseif survivalTF>=1
 end
 
 outColumnList=[matchedColumnNames ColumnNames];
+clearvars matches
+matches=false(length(outColumnList),1);
+for idx=1:length(outColumnList)
+    matches=strcmpi(outColumnList(idx),columnNames)+matches;
+end
 
+outColumnIndex=matches;
 end
 
 
