@@ -74,3 +74,6 @@ patient(1).type=[observationtype];
 patient(1).valueQuantity=[observationval];
 patient(1).valueQuantityunits=[Units];
 patient(1).performer=[nurse];
+
+
+patient=struct2table(patient);
