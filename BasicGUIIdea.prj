@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3013175053" file="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea.prj" location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL" name="BasicGUIIdea" preferred-package-location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="1621455157" file="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea.prj" location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL" name="BasicGUIIdea" preferred-package-location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>EMRAP</param.appname>
     <param.icon />
     <param.icons />
@@ -41,6 +41,9 @@
       <param.icon />
       <param.icons />
       <param.version />
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
       <param.summary />
       <param.description />
       <param.guid />
@@ -76,6 +79,7 @@
     <fileset.package />
     <fileset.depfun>
       <file>${PROJECT_ROOT}\ClassificationElso.m</file>
+      <file>${PROJECT_ROOT}\patient_query_1.m</file>
     </fileset.depfun>
     <build-deliverables>
       <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="readme.txt" optional="true">C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_testing\readme.txt</file>
