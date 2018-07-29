@@ -2,7 +2,8 @@ function [sqlquery, returnTable2]=ClassificationElso(query)
 % Use text analytics to break apart queries into sections
 % not using LSTM
 % J Penick July 2018
-ECMO=evalin('base','ECMO');
+ECMO=load('ECMO.mat');
+ECMO=ECMO.ECMO;
 %query='Average time on ECMO for neonatal patients with VV';
 %query='Survival rate of ECMO for neonatal patients';
 %query='Maximum survival rate of ECMO for pediatric patients in 2002';
@@ -135,7 +136,7 @@ end
 
 %% Determine what columns are wanted in columnsOfInterest
 
-[columnsOfInterest, queryString, outColumnIndex]=ColumnSelectionFunction(queryString);
+[columnsOfInterest, queryString, outColumnIndex]=ColumnSelectionFunction(queryString, ECMO);
 
 
 %% Create WHERE conditionals
@@ -250,9 +251,9 @@ outString=joinWords(mC);
 
 end
 
-function [outColumnList, queryString, outColumnIndex]=ColumnSelectionFunction(queryString)
+function [outColumnList, queryString, outColumnIndex]=ColumnSelectionFunction(queryString, ECMO)
 
-ECMO=evalin('base','ECMO');
+%ECMO=evalin('base','ECMO');
 % See if we get lucky and a column name matches database
 columnNames=fieldnames(ECMO);
 columnNames=lower(columnNames);
