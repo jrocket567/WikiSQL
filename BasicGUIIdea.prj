@@ -1,17 +1,22 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1621455157" file="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea.prj" location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL" name="BasicGUIIdea" preferred-package-location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="1621455157" file="C:\Users\lmepej1\Documents\PMASE\ECMO\trunk\BasicGUIIdea.prj" location="C:\Users\lmepej1\Documents\PMASE\ECMO\trunk" name="BasicGUIIdea" preferred-package-location="C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>EMRAP</param.appname>
-    <param.icon />
-    <param.icons />
+    <param.icon>${PROJECT_ROOT}\BasicGUIIdea_resources\icon.ico</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\BasicGUIIdea_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\BasicGUIIdea_resources\icon_32.png</file>
+      <file>${PROJECT_ROOT}\BasicGUIIdea_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\BasicGUIIdea_resources\icon_16.png</file>
+    </param.icons>
     <param.version>1.0</param.version>
-    <param.authnamewatermark>Jay Penick</param.authnamewatermark>
-    <param.email>jpenick3@gatech.edu</param.email>
-    <param.company>Georgia Tech</param.company>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
     <param.summary>EMRAP program for connecting to FHIR EMR and ELSO registry</param.summary>
     <param.description />
     <param.screenshot>${PROJECT_ROOT}\GTLogo.jpg</param.screenshot>
     <param.guid />
-    <param.installpath.string>\Georgia Tech\EMRAP\</param.installpath.string>
+    <param.installpath.string>\EMRAP\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
     <param.logo>${PROJECT_ROOT}\GTLogo.jpg</param.logo>
     <param.install.notes />
@@ -38,8 +43,6 @@
     <param.example />
     <param.help.text />
     <unset>
-      <param.icon />
-      <param.icons />
       <param.version />
       <param.authnamewatermark />
       <param.email />
@@ -81,45 +84,27 @@
       <file>${PROJECT_ROOT}\patient_query_1.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="readme.txt" optional="true">C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_testing\readme.txt</file>
-      <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="EMRAP.exe" optional="false">C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_testing\EMRAP.exe</file>
-      <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="splash.png" optional="false">C:\Users\jbpenick\Documents\PMASE\Capstone\WikiSQL\BasicGUIIdea\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="readme.txt" optional="true">C:\Users\lmepej1\Documents\PMASE\ECMO\trunk\BasicGUIIdea\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="EMRAP.exe" optional="false">C:\Users\lmepej1\Documents\PMASE\ECMO\trunk\BasicGUIIdea\for_testing\EMRAP.exe</file>
+      <file location="${PROJECT_ROOT}\BasicGUIIdea\for_testing" name="splash.png" optional="false">C:\Users\lmepej1\Documents\PMASE\ECMO\trunk\BasicGUIIdea\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>
       <root>C:\Program Files\MATLAB\R2018a</root>
       <toolboxes>
-        <toolbox name="fixedpoint" />
         <toolbox name="matlabcoder" />
-        <toolbox name="matlabhdlcoder" />
         <toolbox name="embeddedcoder" />
-        <toolbox name="gpucoder" />
         <toolbox name="polyspacebugfinder" />
       </toolboxes>
-      <toolbox>
-        <fixedpoint>
-          <enabled>true</enabled>
-        </fixedpoint>
-      </toolbox>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
       </toolbox>
       <toolbox>
-        <matlabhdlcoder>
-          <enabled>true</enabled>
-        </matlabhdlcoder>
-      </toolbox>
-      <toolbox>
         <embeddedcoder>
           <enabled>true</enabled>
         </embeddedcoder>
-      </toolbox>
-      <toolbox>
-        <gpucoder>
-          <enabled>true</enabled>
-        </gpucoder>
       </toolbox>
       <toolbox>
         <polyspacebugfinder>

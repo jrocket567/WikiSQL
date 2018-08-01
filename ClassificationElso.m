@@ -176,10 +176,10 @@ for idy=1:length(queryString)
         returnTable=ECMO(ECMO.Age<=28,:);
     elseif pedTF==1
         Conditional=[Conditional "AGE >28 AND AGE <=6570"]; %#ok<AGROW>
-        returnTable=ECMO(ECMO.Age>28 && ECMO.Age<=6570,:);
+        returnTable=ECMO(ECMO.Age>28 & ECMO.Age<=6570,:);
     elseif adultTF==1
         Conditional=[Conditional "AGE >6570"]; %#ok<AGROW>
-        returnTable=ECMO(ECMO.Age>657028,:);
+        returnTable=ECMO(ECMO.Age>6570,:);
     end
         
     % look for VV or VA
