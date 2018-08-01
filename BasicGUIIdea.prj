@@ -7,7 +7,7 @@
     <param.authnamewatermark>Jay Penick</param.authnamewatermark>
     <param.email>jpenick3@gatech.edu</param.email>
     <param.company>Georgia Tech</param.company>
-    <param.summary />
+    <param.summary>EMRAP program for connecting to FHIR EMR and ELSO registry</param.summary>
     <param.description />
     <param.screenshot>${PROJECT_ROOT}\GTLogo.jpg</param.screenshot>
     <param.guid />
@@ -44,7 +44,6 @@
       <param.authnamewatermark />
       <param.email />
       <param.company />
-      <param.summary />
       <param.description />
       <param.guid />
       <param.installpath.string />
